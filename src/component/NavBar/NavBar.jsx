@@ -4,7 +4,7 @@ import { AuthContextData } from '../../provider/AuthProvider';
 
 const NavBar = () => {
 
-    const {user, setUser, userSignOut} = useContext(AuthContextData)
+    const {user, setUser, userSignOut,setError} = useContext(AuthContextData)
     console.log(user)
     const handleSignOut = () => {
         userSignOut()
@@ -12,7 +12,7 @@ const NavBar = () => {
             setUser(null)
             console.log('User sign out')
         })
-        .catch(error => console.log(error))
+        .catch(error => setError(error))
         
     }
     const list = <>
