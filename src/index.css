@@ -1,0 +1,11 @@
+@plugin "daisyui";
+@import "tailwindcss";
+
+li.active{
+  color: rgb(1, 102, 204);
+}
+
+li.active:hover{
+  border-top: 2px blueviolet;
+  border-bottom: 2px blueviolet;
+}
