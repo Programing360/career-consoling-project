@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContextData } from '../provider/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 
 const UserSignUp = () => {
@@ -15,7 +16,7 @@ const UserSignUp = () => {
         const password = e.target.password.value
         userLogin(email, password)
         .then(result => {
-            // setUser(true)
+            
             toast('User Login Successful')
             navigate('/')
             setUser(result.user)
@@ -29,7 +30,7 @@ const UserSignUp = () => {
     const handleGoogleSignIn = () => {
         userSignWithGoogle()
         .then(res => {
-            // setUser(true)
+        
             toast('User Login Successful')
             navigate('/')
             setUser(res.user)
@@ -42,6 +43,9 @@ const UserSignUp = () => {
    
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Sign Up - Career Counseling</title>
+            </Helmet>
             <div className="hero-content flex-col">
                 <div className="text-center lg:text-left mb-4">
                     <h1 className="text-4xl font-bold">Sign Up Now</h1>

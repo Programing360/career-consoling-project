@@ -9,9 +9,8 @@ const CardShow = ({ data }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         toast('Add Your Comment')
-        let name = e.target.message.value
         document.getElementById('field').value = ''
-        console.log(name)
+        
     }
     return (
         <div className="hero bg-base-200">

@@ -4,23 +4,22 @@ import { AuthContextData } from '../../provider/AuthProvider';
 
 const NavBar = () => {
 
-    const {user, setUser, userSignOut,setError} = useContext(AuthContextData)
+    const { user, setUser, userSignOut, setError } = useContext(AuthContextData)
     console.log(user)
     const handleSignOut = () => {
         userSignOut()
-        .then(() => {
-            setUser(null)
-            console.log('User sign out')
-        })
-        .catch(error => setError(error))
-        
+            .then(() => {
+                setUser(null)
+            })
+            .catch(error => setError(error))
+
     }
     const list = <>
         <li className='text-black'><NavLink to='/'>Homepage</NavLink></li>
         <li className='text-black'><NavLink to='/about'>About Me</NavLink></li>
         <li className='text-black'><NavLink to='/page'>Page</NavLink></li>
         <li className='text-black'><NavLink to='/dashboard'>Dashboard</NavLink></li>
-        
+
     </>
     return (
         <div>
@@ -43,11 +42,29 @@ const NavBar = () => {
                         {list}
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end pr-3">
                     {
-                       user && user ? <button onClick={handleSignOut} className='btn btn-primary'>Sign out</button> : <Link to='/login' className="btn hover:transform duration-150 ease-in-out bg-[#074c9e] text-white">Login</Link>
+                        user && user ? <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img
+                                        alt="Tailwind CSS Navbar component"
+                                        src={user.photoURL} />
+                                </div>
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                <h3 className='text-center'>{user.email}</h3>
+                                <div className='text-center'>
+                                    <img className='w-10 rounded-full mt-4 mx-auto' src={user.photoURL} alt="" />
+                                    <h2>{user.displayName}</h2>
+                                </div>
+                                <button onClick={handleSignOut} className='btn btn-primary'>Sign out</button>
+                            </ul>
+                        </div> : <Link to='/login' className="btn hover:transform duration-150 ease-in-out bg-[#074c9e] text-white">Login</Link>
                     }
-                    
+
                 </div>
             </div>
         </div>

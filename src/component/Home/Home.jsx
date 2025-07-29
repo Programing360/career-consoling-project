@@ -1,4 +1,6 @@
 
+
+import { Helmet } from 'react-helmet-async';
 import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
@@ -10,6 +12,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Home - Career Counseling</title>
+            </Helmet>
             <NavBar></NavBar>
             <Header></Header>
             <div className='mb-8'>

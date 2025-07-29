@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import photo from '../../assets/career-guidance-for-bangladeshi-students-abroad.webp'
 import NavBar from '../NavBar/NavBar';
 
@@ -5,6 +6,9 @@ const DiscoverMore = () => {
     return (
         <div>
             <NavBar></NavBar>
+            <Helmet>
+                <title>Discover More - Career Counseling</title>
+            </Helmet>
             <div className='flex justify-center gap-16 p-6'>
                 <div>
                     <h1 className="text-2xl">Career guidance for Bangladeshi 

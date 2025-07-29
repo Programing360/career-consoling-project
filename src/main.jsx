@@ -16,6 +16,7 @@ import CardDetails from './component/Card/CardDetails';
 import PrivetRouther from './PrivetRouter/PrivetRouther';
 import ErrorPage from './ErrorPage/ErrorPage';
 import DiscoverMore from './component/Header/DIscoverMore';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,8 @@ const router = createBrowserRouter([
     element: <Root></Root>,
     children: [
       {
-        path:'*',
-        element:<ErrorPage></ErrorPage>
+        path: '*',
+        element: <ErrorPage></ErrorPage>
       },
       {
         path: '/',
@@ -39,21 +40,24 @@ const router = createBrowserRouter([
         element: <UserSignUp></UserSignUp>
       },
       {
-        path:`/details/:id`,
-        element:<PrivetRouther><CardDetails></CardDetails></PrivetRouther>,
-        loader:() => fetch(`/career.json`)
+        path: `/details/:id`,
+        element: <PrivetRouther><CardDetails></CardDetails></PrivetRouther>,
+        loader: () => fetch(`/career.json`)
       },
       {
-        path:'/discover',
-        element:<DiscoverMore></DiscoverMore>
+        path: '/discover',
+        element: <DiscoverMore></DiscoverMore>
       }
     ]
   }
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthProvider>
+    </HelmetProvider>
+
   </StrictMode>,
 )
